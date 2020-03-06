@@ -82,10 +82,10 @@ class AjaxHandler implements HookablePluginDependant
     public function processAjaxNoticeDismiss()
     {
         if (isset($_POST[self::POST_FIELD_NOTICE_NAME])) {
-            $noticeName = $_POST[self::POST_FIELD_NOTICE_NAME];
+            $noticeName = sanitize_text_field($_POST[self::POST_FIELD_NOTICE_NAME]);
 
             if (isset($_POST[self::POST_FIELD_SOURCE])) {
-                $source = $_POST[ self::POST_FIELD_SOURCE ];
+                $source = sanitize_text_field($_POST[ self::POST_FIELD_SOURCE ]);
             } else {
                 $source = null;
             }
