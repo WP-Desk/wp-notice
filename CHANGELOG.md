@@ -1,3 +1,7 @@
+## [3.1.3] - 2021-09-08
+### Changed
+- allow wpdesk/wp-builder 2.0
+
 ## [3.1.2] - 2020-03-05
 ### Added
 - sanitization on posted AJAX data
