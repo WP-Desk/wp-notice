@@ -4,7 +4,7 @@ jQuery( document ).ready(function() {
 		var type = '';
 		jQuery.each(classList, function(index, item) {
 			if (item.startsWith('notice-')) {
-				type = type.replace('notice-','');
+				type = item.replace('notice-','');
 			}
 		});
 		content = this.innerText;
