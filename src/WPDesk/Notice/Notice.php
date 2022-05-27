@@ -245,7 +245,7 @@ class Notice
             $notice_class .= ' ' . $this->attributes['class'];
         }
         if ($this->showInGutenberg) {
-            $notice_class .= 'wpdesk-notice-gutenberg';
+            $notice_class .= ' wpdesk-notice-gutenberg';
         }
         return $notice_class;
     }
