@@ -58,6 +58,12 @@ class Notice
      */
     protected $attributes = array();
 
+    /**
+     * Show notice in gutenberg editor.
+     *
+     * @var bool
+     */
+    protected $showInGutenberg = false;
 
     /**
      * WPDesk_Flexible_Shipping_Notice constructor.
@@ -67,19 +73,22 @@ class Notice
      * @param bool $dismissible Is dismissible.
      * @param int $priority Notice priority.
      * @param array $attributes Attributes.
+     * @param bool $showInGutenberg Show notice in gutenberg editor.
      */
     public function __construct(
         $noticeContent,
         $noticeType = 'info',
         $dismissible = false,
         $priority = 10,
-        $attributes = array()
+        $attributes = array(),
+        $showInGutenberg = false
     ) {
-        $this->noticeContent = $noticeContent;
-        $this->noticeType    = $noticeType;
-        $this->dismissible   = $dismissible;
-        $this->priority      = $priority;
-        $this->attributes    = $attributes;
+        $this->noticeContent   = $noticeContent;
+        $this->noticeType      = $noticeType;
+        $this->dismissible     = $dismissible;
+        $this->priority        = $priority;
+        $this->attributes      = $attributes;
+        $this->showInGutenberg = $showInGutenberg;
         $this->addAction();
     }
 
@@ -225,15 +234,18 @@ class Notice
     protected function getNoticeClass()
     {
         if ('updated' === $this->noticeType) {
-            $notice_class = 'wpdesk notice ' . $this->noticeType;
+            $notice_class = 'notice ' . $this->noticeType;
         } else {
-            $notice_class = 'wpdesk notice notice-' . $this->noticeType;
+            $notice_class = 'notice notice-' . $this->noticeType;
         }
         if ($this->dismissible) {
             $notice_class .= ' is-dismissible';
         }
         if (isset($this->attributes['class'])) {
             $notice_class .= ' ' . $this->attributes['class'];
+        }
+        if ($this->showInGutenberg) {
+            $notice_class .= 'wpdesk-notice-gutenberg';
         }
         return $notice_class;
     }

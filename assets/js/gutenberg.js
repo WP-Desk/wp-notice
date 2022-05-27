@@ -1,5 +1,5 @@
 jQuery( document ).ready(function() {
-	jQuery('.wpdesk').each(function( index ) {
+	jQuery('.wpdesk-notice-gutenberg').each(function( index ) {
 		var classList = jQuery(this).attr('class').split(/\s+/);
 		var type = '';
 		jQuery.each(classList, function(index, item) {
