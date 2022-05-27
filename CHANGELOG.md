@@ -1,3 +1,7 @@
+## [3.2.0] - 2022-05-27
+### Added 
+- support to gutenberg 
+
 ## [3.1.4] - 2021-09-08
 ### Changed
 - allow wpdesk/wp-builder 2.0
