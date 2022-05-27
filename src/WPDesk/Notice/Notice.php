@@ -84,6 +84,18 @@ class Notice
     }
 
     /**
+     * @return bool
+     */
+    public function isBlockEditor()
+    {
+		if ( !function_exists( 'get_current_screen' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/screen.php';
+		}
+
+		return \get_current_screen()->is_block_editor();
+    }
+
+    /**
      * @return string
      */
     public function getNoticeContent()
@@ -163,6 +175,7 @@ class Notice
                 [$this, 'showNotice'],
                 self::ADMIN_FOOTER_BASE_PRIORITY + intval($this->priority)
             );
+			add_action('admin_head', [$this,'addGutenbergScript']);
             $this->actionAdded = true;
         }
     }
@@ -184,6 +197,16 @@ class Notice
     }
 
     /**
+     * Enqueue admin scripts.
+     */
+    public function addGutenbergScript()
+    {
+		if ($this->isBlockEditor()) {
+			include_once 'views/admin-head-js-gutenberg.php';
+		}
+    }
+
+    /**
      * Add attribute.
      *
      * @param string $name Name
@@ -202,9 +225,9 @@ class Notice
     protected function getNoticeClass()
     {
         if ('updated' === $this->noticeType) {
-            $notice_class = 'notice ' . $this->noticeType;
+            $notice_class = 'wpdesk notice ' . $this->noticeType;
         } else {
-            $notice_class = 'notice notice-' . $this->noticeType;
+            $notice_class = 'wpdesk notice notice-' . $this->noticeType;
         }
         if ($this->dismissible) {
             $notice_class .= ' is-dismissible';
