@@ -211,7 +211,7 @@ class Notice
     public function addGutenbergScript()
     {
 		if ($this->isBlockEditor()) {
-			include_once 'views/admin-head-js-gutenberg.php';
+			include_once __DIR__ . '/views/admin-head-js-gutenberg.php';
 		}
     }
 
@@ -233,21 +233,23 @@ class Notice
      */
     protected function getNoticeClass()
     {
+        $notice_classes = ['notice'];
         if ('updated' === $this->noticeType) {
-            $notice_class = 'notice ' . $this->noticeType;
+            $notice_classes[] = $this->noticeType;
         } else {
-            $notice_class = 'notice notice-' . $this->noticeType;
+            $notice_classes[] = 'notice-' . $this->noticeType;
         }
         if ($this->dismissible) {
-            $notice_class .= ' is-dismissible';
+            $notice_classes[] = 'is-dismissible';
         }
         if (isset($this->attributes['class'])) {
-            $notice_class .= ' ' . $this->attributes['class'];
+            $notice_classes[] = $this->attributes['class'];
         }
         if ($this->showInGutenberg) {
-            $notice_class .= ' wpdesk-notice-gutenberg';
+            $notice_classes[] = 'wpdesk-notice-gutenberg';
         }
-        return $notice_class;
+
+        return implode( ' ', $notice_classes );
     }
 
     /**
