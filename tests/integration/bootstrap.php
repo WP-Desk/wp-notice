@@ -27,5 +27,5 @@ tests_add_filter( 'muplugins_loaded', function () {
 //new \WPDesk\Notice\AjaxHandler( 'http://test.com/test/vendor/' );
 
 putenv('WP_TESTS_DIR=' . getenv( 'WP_DEVELOP_DIR' ) . '/tests/phpunit');
-require_once( getenv( 'WC_DEVELOP_DIR' ) . '/tests/bootstrap.php' );
+require_once( getenv( 'WC_DEVELOP_DIR' ) . '/tests/legacy/bootstrap.php' );
 

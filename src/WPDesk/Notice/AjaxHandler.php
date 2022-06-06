@@ -71,7 +71,7 @@ class AjaxHandler implements HookablePluginDependant
      */
     public function addScriptToAdminHead()
     {
-        include 'views/admin-head-js.php';
+        include __DIR__ . '/views/admin-head-js.php';
     }
 
     /**
