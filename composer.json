@@ -11,6 +11,11 @@
             "email": "grola@wpdesk.net"
         }
     ],
+    "config": {
+        "platform": {
+            "php": "7.0"
+        }
+    },
     "require": {
         "php": ">=5.5",
 	    "wpdesk/wp-builder": "^1.0|^2.0"
