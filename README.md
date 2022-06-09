@@ -85,4 +85,24 @@ $notice = new \WPDesk\Notice\PermanentDismissibleNotice( 'Notice text goes here'
 
 ## Project documentation
 
-PHPDoc: https://wpdesk.gitlab.io/wp-notice/index.html 
+### AJAX handler
+
+To use permanent dismissible notices AJAX handler must be created and hooks initialized:
+
+```php
+wpdesk_init_wp_notice_ajax_handler();
+
+// Is equivalent to:
+( new \WPDesk\Notice\AjaxHandler() )->hooks();
+```
+
+### Displaying 
+
+To display permanent dismissible notice:
+
+```php
+wpdesk_permanent_dismissible_wp_notice( 'Notice text goes here', 'notice-name' );
+
+// Is equivalent to
+$notice = new \WPDesk\Notice\PermanentDismissibleNotice( 'Notice text goes here', 'notice-name' );
+```
