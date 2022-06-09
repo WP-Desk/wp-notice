@@ -42,7 +42,7 @@ require_once('/path/to/wp-desk/wp-notice/init.php');
 
 ## Getting Started
 
-###Simple usage looks like
+### Simple usage looks like
 
 ```php
 $notice = wpdesk_wp_notice('Notice text goes here');
