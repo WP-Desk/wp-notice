@@ -106,3 +106,7 @@ wpdesk_permanent_dismissible_wp_notice( 'Notice text goes here', 'notice-name' )
 // Is equivalent to
 $notice = new \WPDesk\Notice\PermanentDismissibleNotice( 'Notice text goes here', 'notice-name' );
 ```
+
+## Project documentation
+
+PHPDoc: https://wpdesk.gitlab.io/wp-notice/index.html 
