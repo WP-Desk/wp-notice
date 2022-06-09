@@ -80,5 +80,5 @@ To display permanent dismissible notice:
 wpdesk_permanent_dismissible_wp_notice( 'Notice text goes here', 'notice-name' );
 
 // Is equivalent to
-new PermanentDismissibleNotice( 'Notice text goes here', 'notice-name' );
+$notice = new \WPDesk\Notice\PermanentDismissibleNotice( 'Notice text goes here', 'notice-name' );
 ```
