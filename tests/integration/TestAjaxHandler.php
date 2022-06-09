@@ -44,9 +44,6 @@ class TestAjaxHandler extends WP_UnitTestCase
     {
         $ajaxHandler = new AjaxHandler(self::ASSETS_URL);
         $ajaxHandler->hooks();
-        global $current_screen;
-        $current_screen = new stdClass();
-        $current_screen->id = 'test';
         do_action('admin_enqueue_scripts');
         $registeredScripts = wp_scripts()->registered;
 
