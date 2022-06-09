@@ -42,6 +42,10 @@ class TestAjaxHandler extends WP_UnitTestCase
 
     public function testEnqueueAdminScripts()
     {
+        $screen = get_current_screen();
+        if ( !isset( $screen->id ) ) {
+            $screen->id = 'test';
+        }
         $ajaxHandler = new AjaxHandler(self::ASSETS_URL);
         $ajaxHandler->hooks();
         do_action('admin_enqueue_scripts');
