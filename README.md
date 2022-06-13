@@ -9,24 +9,24 @@
 WordPress Library to display notices in admin area.
 ===================================================
 
-wp-notice is a simple library for WordPress plugins to display notices in admin area.
+wp-notice is a simple library for WordPress plugins allowing to display notices in admin area.
 
-This library can display simple notices (error, warning, success, info) and dismissible notices.
-It also handles dismiss functionality with AJAX requests.  
+This library can display simple notices such as error, warning, success, info and dismissible ones as well.
+It can also handle dismiss functionality with AJAX requests.  
 
 ## Requirements
 
 PHP 5.5 or later.
 
-## Installation with composer
+## Installation via Composer
 
-You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
+In order to install the bindings via [Composer](http://getcomposer.org/) run the following command:
 
 ```bash
 composer require wpdesk/wp-notice
 ```
 
-To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
+Next, use the Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) to use them:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -34,7 +34,7 @@ require_once 'vendor/autoload.php';
 
 ## Manual installation
 
-If you do not wish to use Composer, you can [download the latest release](https://gitlab.com/wpdesk/wp-notice/-/jobs/artifacts/master/download?job=library). Then, to use the Notices, include the init.php file.
+If you prefer not to use the Composer you can also [download the latest library release](https://gitlab.com/wpdesk/wp-notice/-/jobs/artifacts/master/download?job=library). Once it is done, simply include the init.php file to use the Notices.
 
 ```php
 require_once('/path/to/wp-desk/wp-notice/init.php');
@@ -42,7 +42,7 @@ require_once('/path/to/wp-desk/wp-notice/init.php');
 
 ## Getting Started
 
-### Simple usage looks like
+### Notices usage example
 
 ```php
 $notice = wpdesk_wp_notice('Notice text goes here');
@@ -57,13 +57,13 @@ $notice = \WPDesk\Notice\Factory::notice('Notice text goes here');
 $notice = new \WPDesk\Notice\Notice('Notice text goes here'); 
 ```
 
-Notice must be used before WordPress action `admin_notices`. WordPress admin actions order is listed [here](https://codex.wordpress.org/Plugin_API/Action_Reference#Actions_Run_During_an_Admin_Page_Request).
+Please mind that the Notice must be used before WordPress `admin_notices` action. You can find WordPress admin actions order listed [here](https://codex.wordpress.org/Plugin_API/Action_Reference#Actions_Run_During_an_Admin_Page_Request).
 
-## Permanent dismissible notices
+## Permanently dismissible notices
 
 ### AJAX handler
 
-To use permanent dismissible notices AJAX handler must be created and hooks initialized:
+In order to use permanently dismissible notices the AJAX handler needs to be created first and the hooks initialized:
 
 ```php
 wpdesk_init_wp_notice_ajax_handler();
@@ -72,33 +72,9 @@ wpdesk_init_wp_notice_ajax_handler();
 ( new \WPDesk\Notice\AjaxHandler() )->hooks();
 ```
 
-### Displaying 
+### Displaying the permanently dismissible notices
 
-To display permanent dismissible notice:
-
-```php
-wpdesk_permanent_dismissible_wp_notice( 'Notice text goes here', 'notice-name' );
-
-// Is equivalent to
-$notice = new \WPDesk\Notice\PermanentDismissibleNotice( 'Notice text goes here', 'notice-name' );
-```
-
-## Project documentation
-
-### AJAX handler
-
-To use permanent dismissible notices AJAX handler must be created and hooks initialized:
-
-```php
-wpdesk_init_wp_notice_ajax_handler();
-
-// Is equivalent to:
-( new \WPDesk\Notice\AjaxHandler() )->hooks();
-```
-
-### Displaying 
-
-To display permanent dismissible notice:
+Use the following code for the permanently dismissible notice to be displayed:
 
 ```php
 wpdesk_permanent_dismissible_wp_notice( 'Notice text goes here', 'notice-name' );
