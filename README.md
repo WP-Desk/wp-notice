@@ -5,14 +5,13 @@
 [![Latest Unstable Version](https://poser.pugx.org/wpdesk/wp-notice/v/unstable)](https://packagist.org/packages/wpdesk/wp-notice) 
 [![License](https://poser.pugx.org/wpdesk/wp-notice/license)](https://packagist.org/packages/wpdesk/wp-notice) 
 
+# wp-notice
 
-WordPress Library to display notices in admin area.
-===================================================
+A simple, yet very useful library for WordPress plugins allowing to display the different kind of notices in the admin area. It can be easily used to:
 
-wp-notice is a simple library for WordPress plugins allowing to display notices in admin area.
-
-This library can display simple notices such as error, warning, success, info and dismissible ones as well.
-It can also handle dismiss functionality with AJAX requests.  
+* Display the simple error, warning, success and info notices,
+* Display the permanently dismissible notices,
+* Handle the dismiss functionality with AJAX requests.
 
 ## Requirements
 
