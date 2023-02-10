@@ -4,5 +4,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 ?>
 <script type="text/javascript">
-    <?php include dirname(__FILE__, 4) . '/assets/js/gutenberg.js'; ?>
+    <?php include dirname(__FILE__, 5) . '/assets/js/gutenberg.js'; ?>
 </script>
