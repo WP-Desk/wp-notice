@@ -1,3 +1,9 @@
+## [Unreleased]
+
+### Changed
+
+- Changed dodgy string with `../../..` for `dirname` with level parameter
+
 ## [3.2.0] - 2022-05-27
 ### Added 
 - support to gutenberg 
