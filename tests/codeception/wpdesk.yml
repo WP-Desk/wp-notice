@@ -1,3 +1,6 @@
+plugin-slug: none
+plugin-file: none
+plugin-title: none
 plugins:
   repository:
   local:
