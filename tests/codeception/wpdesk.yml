@@ -1,0 +1,5 @@
+plugins:
+  repository:
+  local:
+  activate:
+prepare-database:
