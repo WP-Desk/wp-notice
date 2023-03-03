@@ -6,7 +6,7 @@ use Codeception\TestCase\WPTestCase;
 use \WPDesk\Notice\AjaxHandler;
 use \WPDesk\Notice\PermanentDismissibleNotice;
 
-class TestAjaxHandler extends WPTestCase {
+class AjaxHandlerTest extends WPTestCase {
 
 	const ASSETS_URL = 'http://test.com/test/assetes/';
 	const NOTICE_NAME = 'test_notice_name';
@@ -68,7 +68,7 @@ class TestAjaxHandler extends WPTestCase {
 		$ajaxHandler->hooks();
 
 		$this->expectOutputString( '<script type="text/javascript">
-' . file_get_contents( __DIR__ . '/../../assets/js/notice.js' ) . '
+jQuery(document).on("click",".notice-dismiss",function(){var a=jQuery(this).closest("div.notice").data("notice-name");var b=jQuery(this).closest("div.notice").data("source");if(""!==a){jQuery.ajax({url:ajaxurl,type:"post",data:{action:"wpdesk_notice_dismiss",notice_name:a,source:b},success:function(c){}})}});jQuery(document).on("click",".notice-dismiss-link",function(){jQuery(this).closest("div.notice").data("source",jQuery(this).data("source"));jQuery(this).closest("div.notice").find(".notice-dismiss").click()});
 </script>
 '
 		);
