@@ -22,6 +22,11 @@ class PermanentDismissibleNotice extends Notice
     /**
      * @var string
      */
+    private $noticeSecurity;
+
+    /**
+     * @var string
+     */
     private $noticeDismissOptionName;
 
     /**
@@ -47,6 +52,8 @@ class PermanentDismissibleNotice extends Notice
         $this->noticeDismissOptionName = static::OPTION_NAME_PREFIX . $noticeName;
         if (self::OPTION_VALUE_DISMISSED === get_option($this->noticeDismissOptionName, '')) {
             $this->removeAction();
+        } else {
+            $this->noticeSecurity = wp_create_nonce($this->noticeDismissOptionName);
         }
     }
 
@@ -68,6 +75,7 @@ class PermanentDismissibleNotice extends Notice
     {
         $attributesAsString = parent::getAttributesAsString();
         $attributesAsString .= sprintf(' data-notice-name="%1$s"', esc_attr($this->noticeName));
+        $attributesAsString .= sprintf(' data-security="%1$s"', esc_attr($this->noticeSecurity));
         $attributesAsString .= sprintf(' id="wpdesk-notice-%1$s"', esc_attr($this->noticeName));
         return $attributesAsString;
     }
