@@ -2,6 +2,8 @@
 #
 # Suite for integration tests.
 
+bootstrap: bootstrap.php
+
 modules:
     enabled:
         - WPDb
@@ -28,8 +30,8 @@ modules:
             dbHost: "%TEST_SITE_DB_HOST%"
             dbUser: "%TEST_SITE_DB_USER%"
             dbPassword: "%TEST_SITE_DB_PASSWORD%"
-            isolatedInstall: true
-            loadOnly: true
+            isolatedInstall: false
+            loadOnly: false
             tablePrefix: "%TEST_SITE_TABLE_PREFIX%"
             plugins: []
             activatePlugins: []

@@ -67,9 +67,10 @@ class AjaxHandlerTest extends WPTestCase {
 		$ajaxHandler = new AjaxHandler();
 		$ajaxHandler->hooks();
 
-		$this->expectOutputString( '<script type="text/javascript">
-jQuery(document).on("click",".notice-dismiss",function(){var a=jQuery(this).closest("div.notice").data("notice-name");var b=jQuery(this).closest("div.notice").data("source");if(""!==a){jQuery.ajax({url:ajaxurl,type:"post",data:{action:"wpdesk_notice_dismiss",notice_name:a,source:b},success:function(c){}})}});jQuery(document).on("click",".notice-dismiss-link",function(){jQuery(this).closest("div.notice").data("source",jQuery(this).data("source"));jQuery(this).closest("div.notice").find(".notice-dismiss").click()});
-</script>
+		$this->expectOutputString( '<script type="text/javascript">'
+                                   . "\n    "
+                                   . file_get_contents( __DIR__ . '/../../../../assets/js/notice.js' )
+                                   . '</script>
 '
 		);
 
@@ -78,6 +79,7 @@ jQuery(document).on("click",".notice-dismiss",function(){var a=jQuery(this).clos
 
 	public function testProcessAjaxNoticeDismiss() {
 		$_POST[ AjaxHandler::POST_FIELD_NOTICE_NAME ] = self::NOTICE_NAME;
+        $_POST[ AjaxHandler::POST_FIELD_SECURITY ] = wp_create_nonce( PermanentDismissibleNotice::OPTION_NAME_PREFIX . sanitize_text_field( self::NOTICE_NAME ) );
 
 		$ajaxHandler = new AjaxHandler( self::ASSETS_URL );
 		$ajaxHandler->processAjaxNoticeDismiss();

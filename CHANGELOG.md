@@ -1,7 +1,9 @@
+## [3.2.2] - 2023-03-02
+### Added
+- security nonce in permanent dismissible notice ajax action
+
 ## [3.2.1] - 2023-02-10
-
 ### Changed
-
 - Changed dodgy string with `../../..` for `dirname` with level parameter
 
 ## [3.2.0] - 2022-05-27
