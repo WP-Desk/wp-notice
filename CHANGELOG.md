@@ -1,4 +1,4 @@
-## [3.2.2] - 2023-03-02
+## [3.2.2] - 2023-03-03
 ### Added
 - security nonce in permanent dismissible notice ajax action
 
