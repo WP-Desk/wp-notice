@@ -4,18 +4,8 @@
 
 modules:
     enabled:
-        - WPDb
         - WPLoader
     config:
-        WPDb:
-            dsn: 'mysql:host=%TEST_SITE_DB_HOST%;dbname=%TEST_SITE_DB_NAME%'
-            user: '%TEST_SITE_DB_USER%'
-            password: '%TEST_SITE_DB_PASSWORD%'
-            waitlock: 10
-            url: '%TEST_SITE_WP_URL%'
-            originalUrl: '%TEST_SITE_WP_URL%'
-            urlReplacement: true #replace the hardcoded dump URL with the one above
-            tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
         WPLoader:
             multisite: false
             wpRootFolder: '%WP_ROOT_FOLDER%'
