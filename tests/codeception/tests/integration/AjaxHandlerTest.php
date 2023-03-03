@@ -81,7 +81,7 @@ class AjaxHandlerTest extends WPTestCase {
 		$_POST[ AjaxHandler::POST_FIELD_NOTICE_NAME ] = self::NOTICE_NAME;
         $_POST[ AjaxHandler::POST_FIELD_SECURITY ] = wp_create_nonce( PermanentDismissibleNotice::OPTION_NAME_PREFIX . sanitize_text_field( self::NOTICE_NAME ) );
 
-		$ajaxHandler = new AjaxHandler( self::ASSETS_URL );
+        $ajaxHandler = new AjaxHandler( self::ASSETS_URL );
 		$ajaxHandler->processAjaxNoticeDismiss();
 
 		$this->assertEquals(
@@ -89,5 +89,18 @@ class AjaxHandlerTest extends WPTestCase {
 			get_option( PermanentDismissibleNotice::OPTION_NAME_PREFIX . self::NOTICE_NAME )
 		);
 	}
+
+    public function testShoulfNotProcessAjaxNoticeDismissWhenInvalidNonce() {
+        $_POST[ AjaxHandler::POST_FIELD_NOTICE_NAME ] = self::NOTICE_NAME;
+        $_POST[ AjaxHandler::POST_FIELD_SECURITY ] = wp_create_nonce();
+
+        $ajaxHandler = new AjaxHandler( self::ASSETS_URL );
+        $ajaxHandler->processAjaxNoticeDismiss();
+
+        $this->assertNotEquals(
+            PermanentDismissibleNotice::OPTION_VALUE_DISMISSED,
+            get_option( PermanentDismissibleNotice::OPTION_NAME_PREFIX . self::NOTICE_NAME )
+        );
+    }
 
 }

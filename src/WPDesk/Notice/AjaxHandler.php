@@ -94,10 +94,13 @@ class AjaxHandler implements HookablePluginDependant {
                     PermanentDismissibleNotice::OPTION_VALUE_DISMISSED
                 );
                 do_action( 'wpdesk_notice_dismissed_notice', $noticeName, $source );
+                if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+                    wp_send_json_success();
+                }
             }
         }
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-            die();
+            wp_send_json_error();
         }
     }
 
