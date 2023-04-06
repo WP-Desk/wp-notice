@@ -103,7 +103,7 @@ class Notice
 
         $screen = \get_current_screen();
 
-		return is_object( $screen ) ? $screen->is_block_editor() : false;
+        return is_object($screen) ? $screen->is_block_editor() : false;
     }
 
     /**
