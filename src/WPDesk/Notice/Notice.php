@@ -101,7 +101,9 @@ class Notice
 			require_once ABSPATH . '/wp-admin/includes/screen.php';
 		}
 
-		return \get_current_screen()->is_block_editor();
+        $screen = \get_current_screen();
+
+		return is_object( $screen ) ? $screen->is_block_editor() : false;
     }
 
     /**
