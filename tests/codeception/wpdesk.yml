@@ -3,6 +3,7 @@ plugin-file: none
 plugin-title: none
 plugins:
   repository:
+    - woocommerce
   local:
   activate:
 prepare-database:
