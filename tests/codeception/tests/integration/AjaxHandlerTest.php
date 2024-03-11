@@ -14,10 +14,20 @@ class AjaxHandlerTest extends WPTestCase {
 
     public function setUp() {
         parent::setUp();
+        add_filter( 'wp_doing_ajax', '__return_true' );
+        add_filter( 'wp_die_ajax_handler', array( $this, 'getDieHandler' ), 1, 1 );
     }
 
     public function tearDown() {
         parent::tearDown();
+    }
+
+    public function getDieHandler( $handler ) {
+        return array( $this, 'dieHandler' );
+    }
+
+    public function dieHandler( $message, $title, $args ) {
+        throw new \Exception( $message );
     }
 
 	public function testHooksWithAssetsURL() {
@@ -77,25 +87,40 @@ class AjaxHandlerTest extends WPTestCase {
 		$ajaxHandler->addScriptToAdminHead();
 	}
 
-	public function testProcessAjaxNoticeDismiss() {
-		$_POST[ AjaxHandler::POST_FIELD_NOTICE_NAME ] = self::NOTICE_NAME;
-        $_POST[ AjaxHandler::POST_FIELD_SECURITY ] = wp_create_nonce( PermanentDismissibleNotice::OPTION_NAME_PREFIX . sanitize_text_field( self::NOTICE_NAME ) );
+    public function testProcessAjaxNoticeDismiss() {
+        $user_name = 'test_user';
+        $random_password = wp_generate_password( $length = 12, $include_standard_special_chars = false );
+        $user_email = 'test@wpdesk.dev';
+        $user_id = wp_create_user( $user_name, $random_password, $user_email );
+        $user = new \WP_User( $user_id );
+        $user->set_role( 'administrator' );
+        $user->save();
+        wp_set_current_user( $user_id );
 
-        $ajaxHandler = new AjaxHandler( self::ASSETS_URL );
-		$ajaxHandler->processAjaxNoticeDismiss();
-
-		$this->assertEquals(
-			PermanentDismissibleNotice::OPTION_VALUE_DISMISSED,
-			get_option( PermanentDismissibleNotice::OPTION_NAME_PREFIX . self::NOTICE_NAME )
-		);
-	}
-
-    public function testShoulfNotProcessAjaxNoticeDismissWhenInvalidNonce() {
         $_POST[ AjaxHandler::POST_FIELD_NOTICE_NAME ] = self::NOTICE_NAME;
-        $_POST[ AjaxHandler::POST_FIELD_SECURITY ] = wp_create_nonce();
+        $_REQUEST[ AjaxHandler::POST_FIELD_SECURITY ] = wp_create_nonce( PermanentDismissibleNotice::OPTION_NAME_PREFIX . sanitize_text_field( self::NOTICE_NAME ) );
 
         $ajaxHandler = new AjaxHandler( self::ASSETS_URL );
         $ajaxHandler->processAjaxNoticeDismiss();
+
+        $this->assertEquals(
+            PermanentDismissibleNotice::OPTION_VALUE_DISMISSED,
+            get_option( PermanentDismissibleNotice::OPTION_NAME_PREFIX . self::NOTICE_NAME, '0' )
+        );
+
+        wp_delete_user( $user_id );
+    }
+
+    public function testShoulfNotProcessAjaxNoticeDismissWhenInvalidNonce() {
+        $_POST[ AjaxHandler::POST_FIELD_NOTICE_NAME ] = self::NOTICE_NAME;
+        $_REQUEST[ AjaxHandler::POST_FIELD_SECURITY ] = wp_create_nonce();
+
+        $ajaxHandler = new AjaxHandler( self::ASSETS_URL );
+        try {
+            $ajaxHandler->processAjaxNoticeDismiss();
+        } catch ( \Exception $e ) {
+            $this->assertEquals('-1', $e->getMessage());
+        }
 
         $this->assertNotEquals(
             PermanentDismissibleNotice::OPTION_VALUE_DISMISSED,

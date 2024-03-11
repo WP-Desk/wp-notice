@@ -30,7 +30,7 @@ modules:
             dbHost: "%TEST_SITE_DB_HOST%"
             dbUser: "%TEST_SITE_DB_USER%"
             dbPassword: "%TEST_SITE_DB_PASSWORD%"
-            isolatedInstall: false
+            isolatedInstall: true
             loadOnly: false
             tablePrefix: "%TEST_SITE_TABLE_PREFIX%"
             plugins: []
