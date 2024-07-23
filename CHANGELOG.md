@@ -1,3 +1,7 @@
+## [3.2.5] - 2024-07-23
+### Fixed
+- Hide Gutenberg-targeted notices in classic editor
+
 ## [3.2.4] - 2024-03-11
 ### Fixed
 - permission check on notice dismiss action
