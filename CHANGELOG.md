@@ -1,6 +1,6 @@
-## [3.2.5] - 2024-03-18
+## [3.2.5] - 2024-07-23
 ### Fixed
-- remove duplicates for JS
+- Hide Gutenberg-targeted notices in classic editor
 
 ## [3.2.4] - 2024-03-11
 ### Fixed
