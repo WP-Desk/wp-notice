@@ -66,7 +66,7 @@ class AjaxHandler implements HookablePluginDependant {
      * Add Java Script to admin header.
      */
     public function addScriptToAdminHead() {
-        include __DIR__ . '/views/admin-head-js.php';
+        require_once __DIR__ . '/views/admin-head-js.php';
     }
 
     /**
