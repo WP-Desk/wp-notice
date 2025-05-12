@@ -266,7 +266,7 @@ class Notice
         if ($this->addParagraphToContent()) {
             $noticeFormat = '<div %1$s><p>%2$s</p></div>';
         }
-        echo sprintf($noticeFormat, $this->getAttributesAsString(), $this->noticeContent);
+        echo \wp_kses_post( sprintf($noticeFormat, $this->getAttributesAsString(), $this->noticeContent) );
     }
 
 }
