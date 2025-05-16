@@ -35,7 +35,7 @@ class AjaxHandler implements HookablePluginDependant {
      * @param string|null $assetsURL Assets URL.
      */
     public function __construct( $assetsURL = null ) {
-        $this->assetsURL = $assetsURL ?? dirname(__FILE__, 5) . '/assets/';
+        $this->assetsURL = $assetsURL ?? plugins_url('/assets/', dirname(__FILE__, 3));
     }
 
     /**
