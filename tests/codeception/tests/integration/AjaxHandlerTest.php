@@ -50,10 +50,6 @@ class AjaxHandlerTest extends WPTestCase {
 
 		$this->assertEquals(
 			self::WP_DEFAULT_PRIORITY,
-			has_action( 'admin_head', [ $ajaxHandler, 'addScriptToAdminHead' ] )
-		);
-		$this->assertEquals(
-			self::WP_DEFAULT_PRIORITY,
 			has_action( 'wp_ajax_wpdesk_notice_dismiss', [ $ajaxHandler, 'processAjaxNoticeDismiss' ] )
 		);
 	}
@@ -71,20 +67,6 @@ class AjaxHandlerTest extends WPTestCase {
 			$registeredScripts['wpdesk_notice']->src,
 			'Script src is invalid!'
 		);
-	}
-
-	public function testAddScriptToAdminHead() {
-		$ajaxHandler = new AjaxHandler();
-		$ajaxHandler->hooks();
-
-		$this->expectOutputString( '<script type="text/javascript">'
-                                   . "\n    "
-                                   . file_get_contents( __DIR__ . '/../../../../assets/js/notice.js' )
-                                   . '</script>
-'
-		);
-
-		$ajaxHandler->addScriptToAdminHead();
 	}
 
     public function testProcessAjaxNoticeDismiss() {
