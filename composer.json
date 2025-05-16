@@ -30,7 +30,6 @@
         "mockery/mockery": "*",
         "10up/wp_mock": "*",
         "wimg/php-compatibility": "^8",
-        "wpdesk/wp-codeception": "^2.7",
         "phpunit/phpunit": "^8"
     },
     "autoload": {
@@ -45,5 +44,11 @@
         "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
         "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
         "phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage"
-    }
+    },
+    "repositories": {
+		"wpdesk": {
+		  "type": "composer",
+		  "url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
+		}
+	}
 }
