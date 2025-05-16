@@ -71,12 +71,12 @@ class AjaxHandler implements HookablePluginDependant {
 
         if($this->isBlockEditor()){
             wp_register_script(
-                self::SCRIPT_HANDLE,
+                self::SCRIPT_HANDLE_GUTENBERG,
                 trailingslashit( $this->assetsURL ) . 'js/gutenberg.js',
                 [ 'jquery' ],
                 self::SCRIPTS_VERSION
             );
-            wp_enqueue_script( self::SCRIPT_HANDLE );
+            wp_enqueue_script( self::SCRIPT_HANDLE_GUTENBERG );
         }else{
             wp_register_style(
                 self::SCRIPT_HANDLE,
