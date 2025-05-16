@@ -11,11 +11,11 @@ use \WPDesk\Notice\PermanentDismissibleNotice;
  */
 class FunctionsTest extends WPTestCase {
 
-    public function setUp() {
+    public function setUp():void {
         parent::setUp();
     }
 
-    public function tearDown() {
+    public function tearDown():void {
         parent::tearDown();
     }
 

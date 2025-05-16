@@ -9,11 +9,11 @@ class PermanentDismissinleNoticeTest extends WPTestCase {
 
 	const NOTICE_NAME = 'test_notice_name';
 
-    public function setUp() {
+    public function setUp():void {
         parent::setUp();
     }
 
-    public function tearDown() {
+    public function tearDown():void {
         parent::tearDown();
     }
 

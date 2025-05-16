@@ -12,13 +12,13 @@ class AjaxHandlerTest extends WPTestCase {
 	const NOTICE_NAME = 'test_notice_name';
 	const WP_DEFAULT_PRIORITY = 10;
 
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
         add_filter( 'wp_doing_ajax', '__return_true' );
         add_filter( 'wp_die_ajax_handler', array( $this, 'getDieHandler' ), 1, 1 );
     }
 
-    public function tearDown() {
+    public function tearDown(): void {
         parent::tearDown();
     }
 
