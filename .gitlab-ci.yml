@@ -4,4 +4,10 @@ variables:
   DISABLE_CODECEPTION: 1
   IS_LIBRARY: 1
 
-include: 'https://gitlab.com/wpdesk/gitlab-ci/raw/master/gitlab-ci-1.2.yml'
+include: 'https://gitlab.wpdesk.dev/wpdesk/gitlab-ci/raw/master/gitlab-ci-1.2.yml'
+
+lint:
+    when: manual
+phpcs:
+    allow_failure: true
+
