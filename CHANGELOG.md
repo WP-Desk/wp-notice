@@ -1,4 +1,4 @@
-## [3.3.0]
+## [3.3.0] - 2025-05-16
 ### Fixed
 - Removing JavaScript code from the page content, adding JavaScript files via admin_enqueue_scripts
 - Escaping
