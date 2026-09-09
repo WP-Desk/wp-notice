@@ -24,21 +24,23 @@
         },
         "allow-plugins": {
             "kylekatarnls/update-helper": true,
-            "wpdesk/wp-codeception": true
+            "wpdesk/wp-codeception": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "require": {
-        "php": ">=7.4",
-        "wpdesk/wp-builder": "^1.0|^2.0"
+        "php": ">=7.4 || ^8"
+    },
+    "suggest": {
+        "wpdesk/wp-builder": "Enables WP Builder integration."
     },
     "require-dev": {
-        "wp-coding-standards/wpcs": "^0.14.1",
-        "squizlabs/php_codesniffer": "^3.0.2",
-        "mockery/mockery": "*",
         "10up/wp_mock": "*",
-        "wimg/php-compatibility": "^8",
-        "wpdesk/wp-codeception": "^2",
-        "phpunit/phpunit": "^8"
+        "mockery/mockery": "*",
+        "phpunit/phpunit": "^8 || ^9",
+        "wpdesk/wp-builder": "^1.0|^2.0",
+        "wpdesk/wp-code-sniffer": "^1",
+        "wpdesk/wp-codeception": "^2"
     },
     "autoload": {
         "psr-4": {
